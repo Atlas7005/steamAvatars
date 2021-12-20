@@ -1,14 +1,15 @@
 {
   "name": "steamavatars",
   "version": "1.0.0",
-  "description": "",
+  "description": "A basic website made with the purpose of collecting steam users' avatars (anonymously).",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Atlas7005",
+  "license": "AGPL-3.0-or-later",
   "dependencies": {
     "axios": "^0.24.0",
     "cors": "^2.8.5",
