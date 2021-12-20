@@ -1,0 +1,3 @@
+port=15644
+mongo=mongodb://someuser:somepassword@localhost:port/some_database?authSource=admin&readPreference=primary
+steamkey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

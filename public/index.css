@@ -1,0 +1,49 @@
+.avatars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(146px, 1fr));
+    grid-gap: .75rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.avatar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-width: 1px;
+    border-style: solid;
+    border-image: linear-gradient(to right, #631fe2, #9a4eff) 1;
+    transition: border-width .2s ease-in-out;
+}
+
+.more-btn {
+    margin-bottom: 1.25rem;
+    width: 100%;
+    padding: .8rem;
+    border: none;
+    background-color: var(--bg-brighter);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    border-image: linear-gradient(to right, #631fe2, #9a4eff) 1;
+    transition: border-width .2s ease-in-out;
+}
+
+.more-btn:hover {
+    border-width: 2px;
+}
+
+.avatar img:hover {
+    border-width: 2px;
+}

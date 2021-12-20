@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Upload — Steam Avatars</title>
+
+        <link rel="stylesheet" href="/global.css">
+        <link rel="stylesheet" href="/upload.css">
+    </head>
+    <body>
+<%- include("template\\nav.ejs") %>
+        <div class="content">
+            <div class="form">
+                <div class="account">
+                    <label for="steamacc">SteamID64</label>
+                    <input type="text" name="steamacc" id="steamacc" autocomplete="off" placeholder="SteamID64 (eg: 76561197963580870)" />
+                </div>
+                <div class="submit">
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+        </div>
+<%- include("template\\footer.ejs") %>
+
+        <script>
+            var submit = document.querySelector("button[type=submit]");
+            var input = document.querySelector("#steamacc");
+            input.onkeyup = e => {
+                if(e.keyCode === 13) {
+                    submit.click();
+                }
+            };
+            submit.addEventListener("click", function(event) {
+                event.preventDefault();
+                var steamacc = document.getElementById("steamacc").value;
+                if (steamacc.length > 0) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "/api/upload", true);
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.onreadystatechange = () => {
+                        if(xhr.readyState === 4) {
+                            if(xhr.status === 200) {
+                                window.location.href = "/";
+                            } else {
+                                alert("An error occurred while uploading your avatar. - " + xhr.responseText);
+                            }
+                        }
+                    };
+
+                    xhr.send(JSON.stringify({
+                        steam: steamacc
+                    }));
+                };
+            });
+        </script>
+    </body>
+</html>

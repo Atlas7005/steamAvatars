@@ -1,0 +1,29 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 84%;
+    width: 100%;
+}
+
+.avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.avatar img {
+    width: auto;
+    height: 150%;
+    object-fit: cover;
+    border-width: 1px;
+    border-style: solid;
+    border-image: linear-gradient(to right, #631fe2, #9a4eff) 1;
+    transition: border-width .2s ease-in-out;
+}
+
+.avatar img:hover {
+    border-width: 2px;
+}
