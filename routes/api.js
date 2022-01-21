@@ -60,7 +60,7 @@ router.get("/avatars", async (req, res) => {
         sort = "date";
     }
 
-    var avatars = await Avatar.find({}).sort({ [sort]: -1 }).skip(page * 33).limit(33);
+    var avatars = await Avatar.find({}).sort({ [sort]: -1 }).skip(page * 55).limit(55);
     avatars = avatars.map(avatar => {
         return avatar.url;
     });

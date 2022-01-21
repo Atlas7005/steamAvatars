@@ -12,7 +12,6 @@
     <body>
 <%- include("template\\nav.ejs") %>
         <div class="content">
-            <button type="button" class="more-btn" onclick="loadMore()">Load More</button>
             <div class="avatars"></div>
         </div>
 <%- include("template\\footer.ejs") %>
@@ -46,14 +45,12 @@
             xhr.send();
 
             var avatarsContainer = document.querySelector(".avatars");
-            var moreBtn = document.querySelector(".more-btn");
             var page = 1;
             var loading = false;
             
             function loadMore() {
                 if(!loading) {
                     loading = true;
-                    moreBtn.innerHTML = "Loading...";
                     xhr.open("GET", `/api/avatars?page=${page}${window.location.search.toLowerCase().includes("sort") ? `&sort=${window.location.search.toLowerCase().split("sort=")[1]}` : ""}`, true);
                     xhr.setRequestHeader("Content-Type", "application/json");
                     xhr.onreadystatechange = () => {
@@ -72,7 +69,6 @@
                                     avatarsContainer.appendChild(avatarElement);
                                 });
                                 page++;
-                                moreBtn.innerHTML = "Load More";
                                 loading = false;
                             } else {
                                 alert("An error occurred while loading avatars. - " + xhr.responseText);
@@ -82,6 +78,12 @@
                     xhr.send();
                 }
             }
+
+            document.querySelector(".content").addEventListener("scroll", () => {
+                if(document.querySelector(".content").scrollTop + document.querySelector(".content").clientHeight >= document.querySelector(".content").scrollHeight) {
+                    loadMore();
+                }
+            });
         </script>
     </body>
 </html>
